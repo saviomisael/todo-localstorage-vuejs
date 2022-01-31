@@ -1,0 +1,12 @@
+<article class="todo-item" :class="todoClassVariants">
+  <button class="todo-item__check-done" :disabled="isDone">
+    <img :src="checkBoxImage" alt="checkbox icon" />
+  </button>
+  <p class="todo-item__description">{{ description }}</p>
+  <a v-if="!isDone" class="todo-item__edit"
+    ><img :src="editIcon" alt="edit icon"
+  /></a>
+  <button class="todo-item__delete">
+    <img :src="deleteIcon" alt="delete icon" />
+  </button>
+</article>

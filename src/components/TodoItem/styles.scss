@@ -1,0 +1,31 @@
+@use '../../sass/variables';
+
+.todo-item {
+  max-width: 90rem;
+  font-size: 1.8rem;
+  display: grid;
+  grid-template-columns: 4rem 1fr 4rem 4rem;
+  gap: 2rem;
+  align-items: center;
+  margin: 0 auto;
+  background-color: darken(variables.$white, 2);
+  padding: 2rem;
+  border-radius: 0.6rem;
+
+  &--low {
+    border: 0.2rem solid variables.$light-green;
+  }
+
+  &--medium {
+    border: 0.2rem solid variables.$yellow;
+  }
+
+  &--high {
+    border: 0.2rem solid variables.$red;
+  }
+
+  &--done {
+    grid-template-columns: 4rem 1fr 4rem;
+    filter: grayscale(60%);
+  }
+}
