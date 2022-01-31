@@ -4,8 +4,14 @@ export const todos = {
     return { todos: [] }
   },
   getters: {
-    todosUndoneCount(state) {
-      return state.todos.filter((x) => !x.isDone).length
+    todosUndoneCount(state, { todosUndone }) {
+      return todosUndone.length
+    },
+    todosUndone(state) {
+      return state.todos.filter((x) => !x.isDone)
+    },
+    todosDone(state) {
+      return state.todos.filter((x) => x.isDone)
     },
   },
 }
