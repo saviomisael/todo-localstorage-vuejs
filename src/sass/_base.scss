@@ -20,3 +20,15 @@ body {
   min-height: 100vh;
   background-color: variables.$white;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
