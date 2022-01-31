@@ -1,0 +1,12 @@
+<header class="home-page__header" :class="headerVariants">
+  <h2 v-if="todosUndoneCount" class="home-page__undone-counter">
+    Você tem {{ todosUndoneCount }} tarefas pendentes.
+  </h2>
+  <router-link :to="addTodoLink" class="add-todo-link"
+    >Adicionar Tarefa</router-link
+  >
+</header>
+
+<main class="home-page__content">
+  <todo-list :todos="todosUndone"></todo-list>
+</main>

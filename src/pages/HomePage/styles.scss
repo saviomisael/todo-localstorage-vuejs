@@ -1,0 +1,30 @@
+@use '../../sass/variables';
+
+.home-page {
+  &__header {
+    max-width: 90vw;
+    margin: 0 auto 3rem;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 1rem;
+    font-size: 2rem;
+
+    &--flex-end {
+      justify-content: end;
+    }
+  }
+}
+.add-todo-link {
+  cursor: pointer;
+  border-radius: 0.4rem;
+  background-color: variables.$black-blue;
+  font-size: 1.7rem;
+  padding: 1rem;
+  color: variables.$white;
+
+  &:hover {
+    filter: brightness(1.2);
+  }
+}
