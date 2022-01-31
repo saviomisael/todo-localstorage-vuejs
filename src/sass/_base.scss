@@ -1,0 +1,22 @@
+@use 'variables';
+
+*,
+*::after,
+*::before {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html,
+body {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: variables.$font-lato;
+  max-width: 100vw;
+  min-height: 100vh;
+  background-color: variables.$white;
+}
