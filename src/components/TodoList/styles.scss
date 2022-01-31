@@ -1,12 +1,20 @@
+@use '../../sass/variables';
+
 .todo-list {
   display: flex;
   flex-direction: column;
   gap: 3.5rem;
+  background-color: variables.$black-green;
+  padding: 4rem;
+  border-radius: 0.8rem;
+  max-width: 80vw;
+  margin: 0 auto;
 
   &__empty-message {
     text-align: center;
     font-size: 2.4rem;
     font-weight: 700;
     text-transform: uppercase;
+    color: variables.$white;
   }
 }
