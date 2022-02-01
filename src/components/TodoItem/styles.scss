@@ -13,15 +13,15 @@
   border-radius: 0.6rem;
 
   &--low {
-    border: 0.2rem solid variables.$light-green;
+    border: 0.3rem solid variables.$light-green;
   }
 
   &--medium {
-    border: 0.2rem solid variables.$yellow;
+    border: 0.3rem solid variables.$yellow;
   }
 
   &--high {
-    border: 0.2rem solid variables.$red;
+    border: 0.3rem solid variables.$red;
   }
 
   &--done {
