@@ -1,4 +1,5 @@
 @use 'variables';
+@use 'mixins';
 
 *,
 *::after,
@@ -7,6 +8,15 @@
   margin: 0;
   box-sizing: border-box;
   font-family: inherit;
+  color: inherit;
+
+  @include mixins.scrollbar-firefox;
+}
+
+@include mixins.scrollbar-chrome;
+
+::selection {
+  background-color: darken(variables.$light-green, 1);
 }
 
 html,
@@ -26,6 +36,10 @@ button {
   background-color: transparent;
   border: none;
   cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
 }
 
 img {
@@ -36,4 +50,16 @@ img {
 
 li {
   list-style: none;
+}
+
+fieldset {
+  border: none;
+}
+
+textarea {
+  caret-color: variables.$black-blue;
+}
+
+input[type='radio'] {
+  display: none;
 }
