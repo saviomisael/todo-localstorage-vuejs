@@ -54,7 +54,7 @@ export default {
   },
   methods: {
     handleCheckBoxClick() {
-      this.emit('check-box-click', this.id)
+      this.$emit('check-box-click', this.id)
     },
   },
 }
