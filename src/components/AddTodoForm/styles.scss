@@ -33,20 +33,39 @@
     gap: 3rem;
   }
 
-  &__btn-submit {
+  &__actions {
     margin-top: 1rem;
-    border: 0.1rem solid variables.$black-blue;
+    display: flex;
+    column-gap: 2rem;
+    align-items: center;
+  }
+
+  &__get-back,
+  &__btn-submit {
     border-radius: 0.6rem;
     padding: 1rem 2rem;
-    transition: all 0.3s;
+
+    &:active {
+      filter: brightness(1.2);
+    }
+  }
+
+  &__get-back {
+    background-color: variables.$black-blue;
+    color: variables.$white;
+
+    &:hover {
+      filter: brightness(1.2);
+    }
+  }
+
+  &__btn-submit {
+    border: 0.1rem solid variables.$black-blue;
+    transition: background-color 0.3s, color 0.3s;
 
     &:hover {
       background-color: variables.$black-blue;
       color: variables.$white;
-    }
-
-    &:active {
-      filter: brightness(1.2);
     }
   }
 }

@@ -71,7 +71,13 @@
     </div>
   </fieldset>
 
-  <button class="add-todo__btn-submit" :disabled="isFormSubmitted">
-    Criar Nova Tarefa
-  </button>
+  <div class="add-todo__actions">
+    <router-link :to="homeLink" class="add-todo__get-back"
+      >Voltar para Home</router-link
+    >
+
+    <button class="add-todo__btn-submit" :disabled="isFormSubmitted">
+      Criar Nova Tarefa
+    </button>
+  </div>
 </form>

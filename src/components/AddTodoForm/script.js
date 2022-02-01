@@ -52,6 +52,9 @@ export default {
         ? ''
         : 'Selecione uma prioridade.'
     },
+    homeLink() {
+      return { name: 'Home' }
+    },
   },
   methods: {
     async handleSubmit() {
