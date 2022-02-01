@@ -9,6 +9,15 @@ export const todos = {
     updateTodos(state, payload) {
       state.todos = payload
     },
+    toggleIsDone(state, payload) {
+      state.todos = state.todos.map((x) => {
+        if (x.id === payload) {
+          x.isDone = !x.isDone
+        }
+
+        return x
+      })
+    },
   },
   actions: {
     addTodo({ commit }, { description, priority }) {
