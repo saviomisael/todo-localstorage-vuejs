@@ -1,4 +1,8 @@
-import { createTodo, getAllTodos } from '../../services/localService'
+import {
+  createTodo,
+  getAllTodos,
+  toggleIsDone,
+} from '../../services/localService'
 
 export const todos = {
   namespaced: true,
@@ -9,15 +13,6 @@ export const todos = {
     updateTodos(state, payload) {
       state.todos = payload
     },
-    toggleIsDone(state, payload) {
-      state.todos = state.todos.map((x) => {
-        if (x.id === payload) {
-          x.isDone = !x.isDone
-        }
-
-        return x
-      })
-    },
   },
   actions: {
     addTodo({ commit }, { description, priority }) {
@@ -27,6 +22,11 @@ export const todos = {
     },
     getAllTodos({ commit }) {
       const todos = getAllTodos()
+
+      commit('updateTodos', todos)
+    },
+    toggleIsDone({ commit }, todoId) {
+      const todos = toggleIsDone(todoId)
 
       commit('updateTodos', todos)
     },
