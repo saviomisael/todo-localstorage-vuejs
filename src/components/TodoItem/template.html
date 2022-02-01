@@ -11,7 +11,7 @@
   <a v-if="!isDone" class="todo-item__edit"
     ><img :src="editIcon" alt="edit icon"
   /></a>
-  <button class="todo-item__delete" type="button">
+  <button class="todo-item__delete" type="button" @click="handleDeleteClick">
     <img :src="deleteIcon" alt="delete icon" />
   </button>
 </article>
