@@ -8,7 +8,7 @@ export default {
     TodoList,
   },
   computed: {
-    ...mapGetters('todos', ['todosUndoneCount', 'todosUndone']),
+    ...mapGetters('todos', ['todosUndoneCount', 'todosUndone', 'todosDone']),
     addTodoLink() {
       return { name: 'CreateTodo' }
     },

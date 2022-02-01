@@ -1,6 +1,11 @@
 @use '../../sass/variables';
 
 .home-page {
+  &__header,
+  &__content {
+    font-size: 2rem;
+  }
+
   &__header {
     max-width: 90vw;
     margin: 0 auto 3rem;
@@ -9,7 +14,6 @@
     align-items: center;
     justify-content: space-between;
     padding-top: 1rem;
-    font-size: 2rem;
 
     &--flex-end {
       justify-content: end;
@@ -18,6 +22,14 @@
 
   &__content {
     padding-bottom: 3rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+  }
+
+  &__todos-finished {
+    padding: 2rem;
+    margin-left: 5rem;
   }
 }
 .add-todo-link {

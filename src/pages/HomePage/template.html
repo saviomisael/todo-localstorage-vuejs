@@ -8,5 +8,11 @@
 </header>
 
 <main class="home-page__content">
-  <todo-list :todos="todosUndone"></todo-list>
+  <todo-list :todos="todosUndone" mode="LIST_UNDONE"></todo-list>
+
+  <h2 class="home-page__todos-finished" v-if="todosDone.length">
+    Tarefas Finalizadas
+  </h2>
+
+  <todo-list :todos="todosDone" mode="LIST_DONE"></todo-list>
 </main>
