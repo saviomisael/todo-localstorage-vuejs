@@ -2,6 +2,12 @@ import { v4 } from 'uuid'
 
 const localStorageKey = 'TODO_APP_VUE'
 
+const persistTodos = ([...todos]) => {
+  const data = JSON.stringify({ todos })
+
+  localStorage.setItem(localStorageKey, data)
+}
+
 export const getAllTodos = () => {
   const todosData = localStorage.getItem(localStorageKey)
 
@@ -17,9 +23,23 @@ export const createTodo = ({ description, priority }) => {
 
   allTodos.push({ description, priority, id: v4(), isDone: false })
 
-  const data = JSON.stringify({ todos: allTodos })
+  persistTodos(allTodos)
 
-  localStorage.setItem(localStorageKey, data)
+  return allTodos
+}
+
+export const toggleIsDone = (todoId) => {
+  let allTodos = getAllTodos()
+
+  allTodos = allTodos.map((x) => {
+    if (x.id === todoId) {
+      x.isDone = !x.isDone
+    }
+
+    return x
+  })
+
+  persistTodos(allTodos)
 
   return allTodos
 }
