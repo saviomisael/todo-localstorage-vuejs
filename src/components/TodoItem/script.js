@@ -5,6 +5,7 @@ import DeleteIcon from '../../assets/images/delete.svg'
 
 export default {
   name: 'TodoItem',
+  emits: ['check-box-click'],
   props: {
     isDone: {
       type: Boolean,
@@ -49,6 +50,11 @@ export default {
         'todo-item--low': this.priority === 'low',
         'todo-item--done': this.isDone,
       }
+    },
+  },
+  methods: {
+    handleCheckBoxClick() {
+      this.emit('check-box-click', this.id)
     },
   },
 }
