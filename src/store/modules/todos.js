@@ -2,6 +2,7 @@ import {
   createTodo,
   getAllTodos,
   toggleIsDone,
+  deleteTodo,
 } from '../../services/localService'
 
 export const todos = {
@@ -27,6 +28,11 @@ export const todos = {
     },
     toggleIsDone({ commit }, todoId) {
       const todos = toggleIsDone(todoId)
+
+      commit('updateTodos', todos)
+    },
+    deleteTodo({ commit }, todoId) {
+      const todos = deleteTodo(todoId)
 
       commit('updateTodos', todos)
     },
