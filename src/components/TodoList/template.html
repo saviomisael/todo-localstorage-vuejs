@@ -11,6 +11,7 @@
       :description="todo.description"
       :is-done="todo.isDone"
       :priority="todo.priority"
+      @check-box-click="handleCheckBoxClick"
     ></todo-item>
   </li>
 </ul>

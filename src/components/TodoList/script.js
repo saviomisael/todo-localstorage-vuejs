@@ -11,4 +11,9 @@ export default {
   components: {
     TodoItem,
   },
+  methods: {
+    handleCheckBoxClick(todoId) {
+      this.$store.dispatch('todos/toggleIsDone', todoId)
+    },
+  },
 }
