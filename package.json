@@ -10,6 +10,8 @@
     "storybook": "start-storybook -p 6006"
   },
   "dependencies": {
+    "@vuelidate/core": "^2.0.0-alpha.34",
+    "@vuelidate/validators": "^2.0.0-alpha.26",
     "core-js": "^3.6.5",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0",
