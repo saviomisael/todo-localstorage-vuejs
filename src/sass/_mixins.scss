@@ -1,0 +1,23 @@
+@use 'variables';
+
+@mixin scrollbar-firefox {
+  scrollbar-width: thin;
+  scrollbar-color: variables.$black-green variables.$light-green;
+}
+
+@mixin scrollbar-chrome {
+  *::-webkit-scrollbar {
+    width: 1rem;
+    border-radius: 1rem;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: variables.$light-green;
+    border-radius: 1rem;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: variables.$black-green;
+    border-radius: 1rem;
+  }
+}
