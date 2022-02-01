@@ -7,7 +7,7 @@
   background-color: variables.$black-green;
   padding: 4rem;
   border-radius: 0.8rem;
-  max-width: 80vw;
+  min-width: 60vw;
   margin: 0 auto;
 
   &__empty-message {
@@ -16,5 +16,10 @@
     font-weight: 700;
     text-transform: uppercase;
     color: variables.$white;
+    background-color: variables.$black-green;
+    padding: 4rem;
+    border-radius: 0.8rem;
+    max-width: 60vw;
+    margin: 0 auto;
   }
 }

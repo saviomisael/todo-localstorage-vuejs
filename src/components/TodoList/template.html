@@ -1,10 +1,8 @@
-<ul class="todo-list">
-  <li v-if="todos.length === 0">
-    <p class="todo-list__empty-message">
-      Parece que você não tem nenhuma tarefa adicionada ou pendente. 😢
-    </p>
-  </li>
+<p v-if="showEmptyMessage" class="todo-list__empty-message">
+  Parece que você não tem nenhuma tarefa pendente. 😢
+</p>
 
+<ul v-if="showTodos" class="todo-list">
   <li v-for="todo in todos" :key="todo.id">
     <todo-item
       :id="todo.id"
