@@ -43,3 +43,13 @@ export const toggleIsDone = (todoId) => {
 
   return allTodos
 }
+
+export const deleteTodo = (todoId) => {
+  let allTodos = getAllTodos()
+
+  allTodos = allTodos.filter((x) => x.id !== todoId)
+
+  persistTodos(allTodos)
+
+  return allTodos
+}
