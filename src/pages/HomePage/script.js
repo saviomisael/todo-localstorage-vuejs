@@ -10,10 +10,13 @@ export default {
   computed: {
     ...mapGetters('todos', ['todosUndoneCount', 'todosUndone']),
     addTodoLink() {
-      return { name: 'Home' }
+      return { name: 'CreateTodo' }
     },
     headerVariants() {
       return { 'home-page__header--flex-end': this.todosUndoneCount === 0 }
     },
+  },
+  mounted() {
+    this.$store.dispatch('todos/getAllTodos')
   },
 }
