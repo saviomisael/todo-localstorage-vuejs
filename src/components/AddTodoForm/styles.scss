@@ -1,0 +1,97 @@
+@use '../../sass/variables';
+
+.add-todo {
+  font-size: 1.8rem;
+  text-align: center;
+  max-width: 60vw;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 1rem;
+
+  &__error-message {
+    color: variables.$red;
+    font-size: 1.4rem;
+  }
+
+  &__description {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  &__priority-title {
+    margin-bottom: 1.5rem;
+  }
+
+  &__priority {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  &__btn-submit {
+    margin-top: 1rem;
+    border: 0.1rem solid variables.$black-blue;
+    border-radius: 0.6rem;
+    padding: 1rem 2rem;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: variables.$black-blue;
+      color: variables.$white;
+    }
+
+    &:active {
+      filter: brightness(1.2);
+    }
+  }
+}
+
+.field-description {
+  border: 0.1rem solid lighten(variables.$black-blue, 1);
+  outline-color: variables.$black-blue;
+  border-radius: 1rem;
+  padding: 0.5rem 1rem;
+  width: calc(0.7 * 60vw);
+  resize: none;
+  overflow: auto;
+  margin: 0 auto;
+}
+
+.priority-radio {
+  &__label {
+    padding: 1rem 2rem;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &--low {
+      border: 0.1rem solid variables.$light-green;
+    }
+
+    &--medium {
+      border: 0.1rem solid variables.$yellow;
+    }
+
+    &--high {
+      border: 0.1rem solid variables.$red;
+    }
+  }
+
+  &__input:checked ~ &__label {
+    &--low {
+      background-color: variables.$light-green;
+    }
+
+    &--medium {
+      background-color: variables.$yellow;
+    }
+
+    &--high {
+      background-color: variables.$red;
+    }
+  }
+}

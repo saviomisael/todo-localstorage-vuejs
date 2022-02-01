@@ -1,0 +1,77 @@
+<form class="add-todo" @submit.prevent="handleSubmit">
+  <fieldset class="add-todo__description">
+    <label for="description"
+      >Descrição da Tarefa
+      <p class="add-todo__error-message" v-if="descriptionErrorMessage">
+        {{ descriptionErrorMessage }}
+      </p></label
+    >
+    <textarea
+      v-model="formData.description"
+      name="description"
+      id="description"
+      class="field-description"
+    />
+  </fieldset>
+
+  <fieldset class="add-todo__priority">
+    <legend class="add-todo__priority-title">
+      Prioridade da Tarefa
+      <p class="add-todo__error-message" v-if="priorityErrorMessage">
+        {{ priorityErrorMessage }}
+      </p>
+    </legend>
+
+    <div class="priority-radio">
+      <input
+        class="priority-radio__input"
+        v-model="formData.priority"
+        type="radio"
+        name="priority"
+        id="priority-low"
+        value="low"
+      />
+      <label
+        class="priority-radio__label priority-radio__label--low"
+        for="priority-low"
+        >Baixa</label
+      >
+    </div>
+
+    <div class="priority-radio">
+      <input
+        class="priority-radio__input"
+        v-model="formData.priority"
+        type="radio"
+        name="priority"
+        id="priority-medium"
+        value="medium"
+      />
+      <label
+        for="priority-medium"
+        class="priority-radio__label priority-radio__label--medium"
+        >Média</label
+      >
+    </div>
+
+    <div class="priority-radio">
+      <input
+        class="priority-radio__input"
+        v-model="formData.priority"
+        type="radio"
+        name="priority"
+        id="priority-high"
+        value="high"
+      />
+      <label
+        for="priority-high"
+        class="priority-radio__label priority-radio__label--high"
+        >Alta</label
+      >
+    </div>
+  </fieldset>
+
+  <button class="add-todo__btn-submit" :disabled="isFormSubmitted">
+    Criar Nova Tarefa
+  </button>
+</form>
