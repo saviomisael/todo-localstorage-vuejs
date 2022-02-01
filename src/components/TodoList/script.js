@@ -15,5 +15,8 @@ export default {
     handleCheckBoxClick(todoId) {
       this.$store.dispatch('todos/toggleIsDone', todoId)
     },
+    handleDeleteClick(todoId) {
+      this.$store.dispatch('todos/deleteTodo', todoId)
+    },
   },
 }

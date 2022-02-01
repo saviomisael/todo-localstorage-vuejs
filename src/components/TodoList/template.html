@@ -1,7 +1,7 @@
 <ul class="todo-list">
   <li v-if="todos.length === 0">
     <p class="todo-list__empty-message">
-      Parece que você não tem nenhuma tarefa adicionada. 😢
+      Parece que você não tem nenhuma tarefa adicionada ou pendente. 😢
     </p>
   </li>
 
@@ -12,6 +12,7 @@
       :is-done="todo.isDone"
       :priority="todo.priority"
       @check-box-click="handleCheckBoxClick"
+      @delete-click="handleDeleteClick"
     ></todo-item>
   </li>
 </ul>
