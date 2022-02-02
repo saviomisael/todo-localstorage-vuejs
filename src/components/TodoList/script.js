@@ -1,3 +1,4 @@
+import { useStore } from 'vuex'
 import TodoItem from '../TodoItem'
 
 export default {
@@ -20,20 +21,28 @@ export default {
   components: {
     TodoItem,
   },
+  setup({ mode, todos }) {
+    const store = useStore()
+
+    const handleCheckBoxClick = (todoId) => {
+      store.dispatch('todos/toggleIsDone', todoId)
+    }
+
+    const handleDeleteClick = (todoId) => {
+      store.dispatch('todos/deleteTodo', todoId)
+    }
+
+    return {
+      handleCheckBoxClick,
+      handleDeleteClick,
+    }
+  },
   computed: {
     showTodos() {
       return this.todos.length
     },
     showEmptyMessage() {
       return this.mode === 'LIST_UNDONE' && !this.todos.length
-    },
-  },
-  methods: {
-    handleCheckBoxClick(todoId) {
-      this.$store.dispatch('todos/toggleIsDone', todoId)
-    },
-    handleDeleteClick(todoId) {
-      this.$store.dispatch('todos/deleteTodo', todoId)
     },
   },
 }
