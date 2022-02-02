@@ -1,3 +1,6 @@
+import { useStore } from 'vuex'
+import { useRouter } from 'vue-router'
+
 import EditorTodoForm from '../../components/EditorTodoForm'
 
 export default {
@@ -5,10 +8,17 @@ export default {
   components: {
     EditorTodoForm,
   },
-  methods: {
-    handleAddTodoSubmit({ description, priority }) {
-      this.$store.dispatch('todos/addTodo', { description, priority })
-      this.$router.push({ name: 'Home' })
-    },
+  setup() {
+    const store = useStore()
+    const router = useRouter()
+
+    const handleAddTodoSubmit = ({ description, priority }) => {
+      store.dispatch('todos/addTodo', { description, priority })
+      router.push({ name: 'Home' })
+    }
+
+    return {
+      handleAddTodoSubmit,
+    }
   },
 }
