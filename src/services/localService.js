@@ -53,3 +53,23 @@ export const deleteTodo = (todoId) => {
 
   return allTodos
 }
+
+export const findTodoById = (todoId) => {
+  return getAllTodos().find((x) => x.id === todoId)
+}
+
+export const updateTodo = ({ description, priority }, todoId) => {
+  let allTodos = getAllTodos()
+
+  allTodos = allTodos.map((x) => {
+    if (x.id === todoId) {
+      x = { ...x, description, priority }
+    }
+
+    return x
+  })
+
+  persistTodos(allTodos)
+
+  return allTodos
+}
