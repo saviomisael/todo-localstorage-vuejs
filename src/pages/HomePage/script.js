@@ -1,4 +1,5 @@
-import { mapGetters } from 'vuex'
+import { computed, onMounted } from 'vue'
+import { useStore } from 'vuex'
 
 import TodoList from '../../components/TodoList'
 
@@ -7,16 +8,27 @@ export default {
   components: {
     TodoList,
   },
-  computed: {
-    ...mapGetters('todos', ['todosUndoneCount', 'todosUndone', 'todosDone']),
-    addTodoLink() {
-      return { name: 'CreateTodo' }
-    },
-    headerVariants() {
-      return { 'home-page__header--flex-end': this.todosUndoneCount === 0 }
-    },
-  },
-  mounted() {
-    this.$store.dispatch('todos/getAllTodos')
+  setup() {
+    const store = useStore()
+
+    const todosUndoneCount = computed(
+      () => store.getters['todos/todosUndoneCount'],
+    )
+    const todosUndone = computed(() => store.getters['todos/todosUndone'])
+    const todosDone = computed(() => store.getters['todos/todosDone'])
+
+    onMounted(() => {
+      store.dispatch('todos/getAllTodos')
+    })
+
+    return {
+      todosUndoneCount,
+      todosUndone,
+      todosDone,
+      addTodoLink: computed(() => ({ name: 'CreateTodo' })),
+      headerVariants: computed(() => ({
+        'home-page__header--flex-end': todosUndoneCount.value === 0,
+      })),
+    }
   },
 }
