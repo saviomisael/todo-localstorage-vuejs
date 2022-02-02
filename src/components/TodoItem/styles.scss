@@ -11,6 +11,11 @@
   background-color: darken(variables.$white, 2);
   padding: 2rem;
   border-radius: 0.6rem;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
 
   &--low {
     border: 0.3rem solid variables.$light-green;
