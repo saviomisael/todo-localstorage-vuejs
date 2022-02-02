@@ -1,0 +1,8 @@
+<main class="update-todo">
+  <editor-todo-form
+    :description="singleTodo?.description"
+    :priority="singleTodo?.priority"
+    mode="EDIT"
+    @editor-todo-submit="handleEditTodoSubmit"
+  ></editor-todo-form>
+</main>
