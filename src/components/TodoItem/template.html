@@ -1,16 +1,15 @@
 <article class="todo-item" :class="todoClassVariants">
   <button
     class="todo-item__check-done"
-    :disabled="isDone"
     @click="handleCheckBoxClick"
     type="button"
   >
     <img :src="checkBoxImage" alt="checkbox icon" />
   </button>
   <p class="todo-item__description">{{ description }}</p>
-  <a v-if="!isDone" class="todo-item__edit"
+  <router-link :to="editTodoLink" v-if="!isDone" class="todo-item__edit"
     ><img :src="editIcon" alt="edit icon"
-  /></a>
+  /></router-link>
   <button class="todo-item__delete" type="button" @click="handleDeleteClick">
     <img :src="deleteIcon" alt="delete icon" />
   </button>

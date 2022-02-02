@@ -51,6 +51,12 @@ export default {
         'todo-item--done': this.isDone,
       }
     },
+    editTodoLink() {
+      return {
+        name: 'UpdateTodo',
+        params: { todoId: this.id },
+      }
+    },
   },
   methods: {
     handleCheckBoxClick() {
