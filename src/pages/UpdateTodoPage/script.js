@@ -34,7 +34,7 @@ export default {
 
     onMounted(() => {
       if (isSingleTodoNotFound) {
-        router.replace({ name: 'Home' })
+        router.replace({ name: 'NotFound' })
       }
     })
 
