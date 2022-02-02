@@ -3,14 +3,16 @@
 </p>
 
 <ul v-if="showTodos" class="todo-list">
-  <li v-for="todo in todos" :key="todo.id">
-    <todo-item
-      :id="todo.id"
-      :description="todo.description"
-      :is-done="todo.isDone"
-      :priority="todo.priority"
-      @check-box-click="handleCheckBoxClick"
-      @delete-click="handleDeleteClick"
-    ></todo-item>
-  </li>
+  <transition-group name="fade">
+    <li v-for="todo in todos" :key="todo.id">
+      <todo-item
+        :id="todo.id"
+        :description="todo.description"
+        :is-done="todo.isDone"
+        :priority="todo.priority"
+        @check-box-click="handleCheckBoxClick"
+        @delete-click="handleDeleteClick"
+      ></todo-item>
+    </li>
+  </transition-group>
 </ul>
