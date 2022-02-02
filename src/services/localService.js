@@ -6,6 +6,8 @@ const persistTodos = ([...todos]) => {
   const data = JSON.stringify({ todos })
 
   localStorage.setItem(localStorageKey, data)
+
+  return todos
 }
 
 export const getAllTodos = () => {
@@ -23,9 +25,7 @@ export const createTodo = ({ description, priority }) => {
 
   allTodos.push({ description, priority, id: v4(), isDone: false })
 
-  persistTodos(allTodos)
-
-  return allTodos
+  return persistTodos(allTodos)
 }
 
 export const toggleIsDone = (todoId) => {
@@ -39,9 +39,7 @@ export const toggleIsDone = (todoId) => {
     return x
   })
 
-  persistTodos(allTodos)
-
-  return allTodos
+  return persistTodos(allTodos)
 }
 
 export const deleteTodo = (todoId) => {
@@ -49,9 +47,7 @@ export const deleteTodo = (todoId) => {
 
   allTodos = allTodos.filter((x) => x.id !== todoId)
 
-  persistTodos(allTodos)
-
-  return allTodos
+  return persistTodos(allTodos)
 }
 
 export const findTodoById = (todoId) => {
@@ -69,7 +65,5 @@ export const updateTodo = ({ description, priority }, todoId) => {
     return x
   })
 
-  persistTodos(allTodos)
-
-  return allTodos
+  return persistTodos(allTodos)
 }
