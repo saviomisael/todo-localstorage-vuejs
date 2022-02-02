@@ -5,10 +5,18 @@ export default {
   component: EditorTodoForm,
 }
 
-export const Template = (args) => ({
+const Template = (args) => ({
   components: { EditorTodoForm },
   setup() {
     return { args }
   },
   template: `<EditorTodoForm v-bind="args" />`,
 })
+
+export const Default = Template.bind({})
+
+export const WhenModeIsEdit = Template.bind({})
+
+WhenModeIsEdit.args = {
+  mode: 'EDIT',
+}

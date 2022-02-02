@@ -20,6 +20,9 @@ export default {
       default() {
         return ''
       },
+      validator(value) {
+        return oneOf(['low', 'medium', 'high'])(value)
+      },
     },
     mode: {
       type: String,
