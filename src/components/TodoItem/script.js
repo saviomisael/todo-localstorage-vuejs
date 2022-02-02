@@ -1,3 +1,5 @@
+import { computed } from 'vue'
+
 import CheckBoxIcon from '../../assets/images/check_box.svg'
 import CheckBoxIconOutline from '../../assets/images/check_box_outline.svg'
 import EditIcon from '../../assets/images/edit.svg'
@@ -33,37 +35,33 @@ export default {
       required: true,
     },
   },
-  computed: {
-    checkBoxImage() {
-      return this.isDone ? CheckBoxIcon : CheckBoxIconOutline
-    },
-    editIcon() {
-      return EditIcon
-    },
-    deleteIcon() {
-      return DeleteIcon
-    },
-    todoClassVariants() {
-      return {
-        'todo-item--high': this.priority === 'high',
-        'todo-item--medium': this.priority === 'medium',
-        'todo-item--low': this.priority === 'low',
-        'todo-item--done': this.isDone,
-      }
-    },
-    editTodoLink() {
-      return {
+  setup({ isDone, priority, id }, { emit }) {
+    const handleCheckBoxClick = () => {
+      emit('check-box-click', id)
+    }
+
+    const handleDeleteClick = () => {
+      emit('delete-click', id)
+    }
+
+    return {
+      checkBoxImage: computed(() =>
+        isDone ? CheckBoxIcon : CheckBoxIconOutline,
+      ),
+      editIcon: computed(() => EditIcon),
+      deleteIcon: computed(() => DeleteIcon),
+      todoClassVariants: computed(() => ({
+        'todo-item--high': priority === 'high',
+        'todo-item--medium': priority === 'medium',
+        'todo-item--low': priority === 'low',
+        'todo-item--done': isDone,
+      })),
+      editTodoLink: computed(() => ({
         name: 'UpdateTodo',
-        params: { todoId: this.id },
-      }
-    },
-  },
-  methods: {
-    handleCheckBoxClick() {
-      this.$emit('check-box-click', this.id)
-    },
-    handleDeleteClick() {
-      this.$emit('delete-click', this.id)
-    },
+        params: { todoId: id },
+      })),
+      handleCheckBoxClick,
+      handleDeleteClick,
+    }
   },
 }
