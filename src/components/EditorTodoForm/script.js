@@ -1,15 +1,11 @@
+import { computed, reactive, ref } from 'vue'
 import useVuelidate from '@vuelidate/core'
 import { minLength, maxLength, required } from '@vuelidate/validators'
 import { oneOf } from '../../validators/oneOf'
 
 export default {
   name: 'EditorTodoForm',
-  setup() {
-    return {
-      v$: useVuelidate(),
-    }
-  },
-  emits: ['add-todo-submit'],
+  emits: ['editor-todo-submit'],
   props: {
     description: {
       type: String,
@@ -25,35 +21,59 @@ export default {
         return ''
       },
     },
-  },
-  data() {
-    return {
-      formData: {
-        description: this.description,
-        priority: this.priority,
+    mode: {
+      type: String,
+      required: false,
+      default() {
+        return 'CREATE'
       },
-      isFormSubmitted: false,
-    }
-  },
-  validations() {
-    return {
-      formData: {
-        description: {
-          required,
-          minLength: minLength(3),
-          maxLength: maxLength(180),
-        },
-        priority: {
-          oneOf: oneOf(['low', 'medium', 'high']),
-        },
+      validator(value) {
+        return value === 'CREATE' || value === 'EDIT'
       },
-    }
+    },
   },
-  computed: {
-    descriptionErrorMessage() {
-      if (!this.v$.formData.description.$errors.length) return ''
+  setup({ description, priority, mode }, { emit }) {
+    const isFormSubmitted = ref(false)
 
-      const { $validator } = this.v$.formData.description.$errors[0]
+    const formData = reactive({
+      descriptionField: description,
+      priorityField: priority,
+    })
+
+    const formRules = computed(() => ({
+      descriptionField: {
+        required,
+        minLength: minLength(3),
+        maxLength: maxLength(180),
+      },
+      priorityField: {
+        oneOf: oneOf(['low', 'medium', 'high']),
+      },
+    }))
+
+    const v$ = useVuelidate(formRules, formData)
+
+    const handleSubmit = async () => {
+      isFormSubmitted.value = true
+
+      const isFormValid = await v$.value.$validate()
+
+      if (!isFormValid) {
+        isFormSubmitted.value = false
+
+        return
+      }
+
+      emit('editor-todo-submit', {
+        description: formData.descriptionField,
+        priority: formData.priorityField,
+      })
+    }
+
+    const descriptionErrorMessage = computed(() => {
+      if (!v$.value.descriptionField.$errors.length) return ''
+
+      const { $validator } = v$.value.descriptionField.$errors[0]
 
       const bindingMessages = {
         required: 'A descrição é um campo obrigatório.',
@@ -62,29 +82,27 @@ export default {
       }
 
       return bindingMessages[$validator]
-    },
-    priorityErrorMessage() {
-      return !this.v$.formData.priority.$errors.length
-        ? ''
-        : 'Selecione uma prioridade.'
-    },
-    homeLink() {
-      return { name: 'Home' }
-    },
-  },
-  methods: {
-    async handleSubmit() {
-      this.isFormSubmitted = true
+    })
 
-      const isFormValid = await this.v$.$validate()
+    const priorityErrorMessage = computed(() =>
+      !v$.value.priorityField.$errors.length ? '' : 'Selecione uma prioridade.',
+    )
 
-      if (!isFormValid) {
-        this.isFormSubmitted = false
+    const homeLink = computed(() => ({ name: 'Home' }))
 
-        return
-      }
+    const btnSubmitCaption = computed(() =>
+      mode === 'CREATE' ? 'Criar Nova Tarefa' : 'Atualizar Tarefa',
+    )
 
-      this.$emit('add-todo-submit', { ...this.formData })
-    },
+    return {
+      v$,
+      homeLink,
+      formData,
+      handleSubmit,
+      descriptionErrorMessage,
+      priorityErrorMessage,
+      isFormSubmitted,
+      btnSubmitCaption,
+    }
   },
 }

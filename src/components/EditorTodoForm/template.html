@@ -7,7 +7,7 @@
       </p></label
     >
     <textarea
-      v-model="formData.description"
+      v-model="formData.descriptionField"
       name="description"
       id="description"
       class="field-description"
@@ -25,7 +25,7 @@
     <div class="priority-radio">
       <input
         class="priority-radio__input"
-        v-model="formData.priority"
+        v-model="formData.priorityField"
         type="radio"
         name="priority"
         id="priority-low"
@@ -41,7 +41,7 @@
     <div class="priority-radio">
       <input
         class="priority-radio__input"
-        v-model="formData.priority"
+        v-model="formData.priorityField"
         type="radio"
         name="priority"
         id="priority-medium"
@@ -57,7 +57,7 @@
     <div class="priority-radio">
       <input
         class="priority-radio__input"
-        v-model="formData.priority"
+        v-model="formData.priorityField"
         type="radio"
         name="priority"
         id="priority-high"
@@ -77,7 +77,7 @@
     >
 
     <button class="add-todo__btn-submit" :disabled="isFormSubmitted">
-      Criar Nova Tarefa
+      {{ btnSubmitCaption }}
     </button>
   </div>
 </form>
