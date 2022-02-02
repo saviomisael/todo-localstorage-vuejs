@@ -21,7 +21,7 @@ export default {
         return ''
       },
       validator(value) {
-        return oneOf(['low', 'medium', 'high'])(value)
+        return oneOf(['', 'low', 'medium', 'high'])(value)
       },
     },
     mode: {
