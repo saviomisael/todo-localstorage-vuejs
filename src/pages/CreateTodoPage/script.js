@@ -1,9 +1,9 @@
-import AddTodoForm from '../../components/AddTodoForm'
+import EditorTodoForm from '../../components/EditorTodoForm'
 
 export default {
   name: 'CreateTodoPage',
   components: {
-    AddTodoForm,
+    EditorTodoForm,
   },
   methods: {
     handleAddTodoSubmit({ description, priority }) {

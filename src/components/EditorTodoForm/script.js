@@ -3,18 +3,34 @@ import { minLength, maxLength, required } from '@vuelidate/validators'
 import { oneOf } from '../../validators/oneOf'
 
 export default {
-  name: 'AddTodoForm',
+  name: 'EditorTodoForm',
   setup() {
     return {
       v$: useVuelidate(),
     }
   },
   emits: ['add-todo-submit'],
+  props: {
+    description: {
+      type: String,
+      required: false,
+      default() {
+        return ''
+      },
+    },
+    priority: {
+      type: String,
+      required: false,
+      default() {
+        return ''
+      },
+    },
+  },
   data() {
     return {
       formData: {
-        description: '',
-        priority: '',
+        description: this.description,
+        priority: this.priority,
       },
       isFormSubmitted: false,
     }
