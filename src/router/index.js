@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomePage from '../pages/HomePage'
 import CreateTodoPage from '../pages/CreateTodoPage'
 import UpdateTodoPage from '../pages/UpdateTodoPage'
+import NotFoundPage from '../pages/NotFoundPage'
 
 const routes = [
   {
@@ -20,6 +21,11 @@ const routes = [
     name: 'UpdateTodo',
     component: UpdateTodoPage,
     props: true,
+  },
+  {
+    path: '/:notFound(.*)*',
+    name: 'NotFound',
+    component: NotFoundPage,
   },
 ]
 

@@ -1,0 +1,14 @@
+.not-found {
+  &__message {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2.6rem;
+    text-align: center;
+  }
+
+  &__link {
+    text-decoration: underline;
+  }
+}
