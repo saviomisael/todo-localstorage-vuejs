@@ -4,6 +4,7 @@ import {
   toggleIsDone,
   deleteTodo,
   findTodoById,
+  updateTodo,
 } from '../../services/localService'
 
 export const todos = {
@@ -53,6 +54,11 @@ export const todos = {
       } else {
         commit('singleTodoNotFound')
       }
+    },
+    updateTodoById({ commit }, { todoId, description, priority }) {
+      const todos = updateTodo({ description, priority }, todoId)
+
+      commit('updateTodos', todos)
     },
   },
   getters: {
