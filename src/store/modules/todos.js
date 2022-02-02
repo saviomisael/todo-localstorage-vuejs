@@ -3,16 +3,25 @@ import {
   getAllTodos,
   toggleIsDone,
   deleteTodo,
+  findTodoById,
 } from '../../services/localService'
 
 export const todos = {
   namespaced: true,
   state() {
-    return { todos: [] }
+    return { todos: [], singleTodo: null, isSingleTodoNotFound: false }
   },
   mutations: {
     updateTodos(state, payload) {
       state.todos = payload
+    },
+    updateSingleTodo(state, payload) {
+      state.singleTodo = payload
+      state.isSingleTodoNotFound = false
+    },
+    singleTodoNotFound(state) {
+      state.singleTodo = null
+      state.isSingleTodoNotFound = true
     },
   },
   actions: {
@@ -35,6 +44,15 @@ export const todos = {
       const todos = deleteTodo(todoId)
 
       commit('updateTodos', todos)
+    },
+    findTodoById({ commit }, todoId) {
+      const todo = findTodoById(todoId)
+
+      if (todo) {
+        commit('updateSingleTodo', { ...todo })
+      } else {
+        commit('singleTodoNotFound')
+      }
     },
   },
   getters: {
