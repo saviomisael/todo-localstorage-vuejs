@@ -31,7 +31,7 @@ yarn install
 ### Rode o app em modo de desenvolvimento
 
 ```
-yarn serve
+docker compose up -d
 ```
 
 ### Realizar o build do app
